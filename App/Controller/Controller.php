@@ -53,7 +53,9 @@ Class Controller
                 require_once $filePath;
             }
         } catch(\Exception $e) {
-            echo $e->getMessage();
+            $this->render('action/default', [
+                'error' => $e -> getMessage()
+            ]);
         }
 
         
