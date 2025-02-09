@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use Exception;
+
 Class Controller
 {
     public function route():void
@@ -21,12 +23,18 @@ Class Controller
 
                 default:
                     //Erreur
+                    throw new Exception("Le contrôleur n'existe pas");
                     break;
             }
         } else {
             //charger la page d'accueil
         }
-        
+
+        } catch (\Exception $e) {
+            $this->render('errors/default', [
+                'error' => $e->getMessage()
+            ]);
+        }
         
     }
 
