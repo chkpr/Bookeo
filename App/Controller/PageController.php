@@ -6,6 +6,34 @@ class PageController extends Controller
 {
     public function route():void
     {
+        try {
+
+            if (isset($_GET['action'])) {
+            switch ($_GET['action']) {
+                case 'about':
+                    //On appelle la méthode about
+                    $this->about();
+                    break;
+                case 'home':
+                    //charger le controller home
+                    $this->home();
+                    break;
+
+                default:
+                    //Erreur
+                    throw new \Exception("Cette action n'existe pas : ".$_GET['action']);
+                    break;
+            }
+        } else {
+            //s'il n'y a pas d'action (si l'action n'est pas définie)
+            throw new \Exception("Aucune action détectée");
+        }
+
+    } catch (\Exception $e) {
+        $this->render('errors/default', [
+            'error' => $e->getMessage()
+        ]);
+    }
         if (isset($_GET['action'])) {
             switch ($_GET['action']) {
                 case 'about':
@@ -14,7 +42,7 @@ class PageController extends Controller
                     break;
                 case 'home':
                     //charger le controller book
-                    var_dump('On appelle la méthode home');
+                    $this->home();
                     break;
 
                 default:
@@ -29,13 +57,22 @@ class PageController extends Controller
     protected function about()
     {
         /* On pourrait récupérer les données en faisant appel au modèle */
-        $params = [
-            'test' => 'abc',
-            'test2' => 'abc2'
-        ];
+        
+        //$params = [
+            //'test' => 'abc',
+            //'test2' => 'abc2'
+        //];
         
 
-        $this->render('page/about', $params);
+        $this->render('page/about', [
+            'test' => 'abc',
+            'test2' => 'abc2'
+        ]);
+    }
+
+    protected function home()
+    {
+        $this->render('page/home', []);
     }
 
 }

@@ -27,7 +27,9 @@ Class Controller
                     break;
             }
         } else {
-            //charger la page d'accueil
+            //charger la page d'accueil si pas de controller dans l'url
+            $pageController = new PageController();
+            $pageController->home();
         }
 
         } catch (\Exception $e) {
