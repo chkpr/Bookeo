@@ -1,4 +1,4 @@
-        <?php require_once _ROOTPATH_.'\templates\header.php'; ?>
+        <?php require_once _ROOTPATH_.'\templates\header.php';  ?>
             
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div class="col-10 col-sm-8 col-lg-6">

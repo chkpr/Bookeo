@@ -18,7 +18,8 @@ Class Controller
                     break;
                 case 'book':
                     //charger le controller book
-                    var_dump('On charge BookController');
+                    $pageController = new BookController();
+                    $pageController->route();
                     break;
 
                 default:

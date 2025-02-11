@@ -54,6 +54,11 @@ class PageController extends Controller
         }
     }
 
+        /*
+    Exemple d'appel depuis l'url
+        ?controller=page&action=about
+    */
+
     protected function about()
     {
         /* On pourrait récupérer les données en faisant appel au modèle */
@@ -69,6 +74,11 @@ class PageController extends Controller
             'test2' => 'abc2'
         ]);
     }
+
+        /*
+    Exemple d'appel depuis l'url
+        ?controller=book&action=home
+    */
 
     protected function home()
     {
