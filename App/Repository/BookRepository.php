@@ -37,4 +37,19 @@ class BookRepository
 
         return $bookEntity;
     }
+
+    public function getBooks($pdo) {
+        $mysql = Mysql::getInstance();
+        $pdo = $mysql->getPDO();
+
+        $query = $pdo->prepare('SELECT * FROM book ORDER BY id DESC LIMIT 3');
+        
+        $query->execute();
+        return $query->fetchAll($pdo::FETCH_ASSOC);
+        
+
+        //$book = ['id' => 1, 'title' => 'titre test', 'description' => 'description test'];
+
+        $bookEntity = new Book();
+    }
 }

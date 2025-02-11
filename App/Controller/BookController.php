@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\BookRepository;
+use App\Db\Mysql;
+
 
 class BookController extends Controller
 {
@@ -17,6 +19,7 @@ class BookController extends Controller
                     $this->show();
                     break;
                 case 'list':
+                    $this->list();
                     //appeler la méthode list
                     break;
                 case 'edit':
@@ -76,6 +79,15 @@ class BookController extends Controller
         }
 
         
+    }
+
+    protected function list() 
+    {
+        $mysql = Mysql::getInstance();
+        $pdo = $mysql->getPDO();
+        $bookRepository = new BookRepository;
+        $book = $bookRepository->getBooks($pdo);
+        var_dump($book);
     }
 
 }

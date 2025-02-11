@@ -1,4 +1,6 @@
-        <?php require_once _ROOTPATH_.'\templates\header.php';  ?>
+        <?php require_once _ROOTPATH_.'\templates\header.php';  
+        /* @var $book \App\Entity\Book */
+        ?>
             
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div class="col-10 col-sm-8 col-lg-6">
@@ -14,43 +16,26 @@
                 </div>
             </div>        
 
+            
             <div class="row text-center">
+                <?php foreach ($books as $book) { ?>
                 <div class="col-md-4 my-2 d-flex">
+                    
                     <div class="card">
-                        <img src="uploads/books/1-1984.jpg" class="card-img-top" alt="...">
+                        
+                        <img src="uploads/books/<?=$book['image']?>" class="img-fluid border rounded-top" style="height: 30rem;" alt="Couverture du livre <?=$book['title']?>">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title"><?=$book['title']?></h5>
+                            <a href="#" class="btn btn-primary">Découvrir</a>
+                            
                         </div>
                     </div>
+                    
                 </div>
-            
+            <?php } ?>
 
             
-                <div class="col-md-4 my-2 d-flex">
-                    <div class="card">
-                        <img src="uploads/books/2-histoires-courtes.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            
 
-           
-                <div class="col-md-4 my-2 d-flex">
-                    <div class="card">
-                        <img src="uploads/books/3-zai-zai-zai-zai.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         <?php require_once _ROOTPATH_.'\templates\footer.php'; ?>

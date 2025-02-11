@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Controller\BookController;
+use App\Repository\BookRepository;
+use App\Db\Mysql;
+
 class PageController extends Controller
 {
     public function route():void
@@ -82,7 +86,18 @@ class PageController extends Controller
 
     protected function home()
     {
-        $this->render('page/home', []);
+        $mysql = Mysql::getInstance();
+        $pdo = $mysql->getPDO();
+        $bookRepository = new BookRepository;
+        $books = $bookRepository->getBooks($pdo);
+
+        $this->render('page/home', [
+            'books' => $books
+        ]);
+
+        
     }
+
+
 
 }
