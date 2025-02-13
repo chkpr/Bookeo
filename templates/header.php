@@ -23,7 +23,7 @@
             <li><a href="index.php" class="nav-link px-2 link-secondary">Accueil</a></li>
             <li><a href="index.php?controller=book&action=list" class="nav-link px-2">Tous les livres</a></li>
             <li><a href="index.php?controller=page&action=about" class="nav-link px-2">À propos</a></li>
-            <li><a href="index.php?controller=page&action=about" class="nav-link px-2">Gérer</a></li>
+            <li><a href="index.php?controller=page&action=add" class="nav-link px-2">Gérer</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
