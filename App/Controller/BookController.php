@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\BookRepository;
+use App\Repository\AuthorRepository;
+use App\Repository\TypeRepository;
 use App\Db\Mysql;
 
 
@@ -26,7 +28,7 @@ class BookController extends Controller
                     //appeler la méthode edit
                     break;
                 case 'add':
-                    //appeler la méthode Add
+                    $this->add();
                     break;
                 case 'delete':
                     //appeler la méthode Delete
@@ -62,12 +64,24 @@ class BookController extends Controller
             if (isset($_GET['id'])) {  
                 
                 $id = (int)$_GET['id'];
+
                 //Charger le livre par un appel au repository
                 $bookRepository = new BookRepository;
                 $book = $bookRepository->findOneById($id);
 
+                $mysql = Mysql::getInstance();
+                $pdo = $mysql->getPDO();
+                $bookRepository = new BookRepository;
+                //$authorRepository = new AuthorRepository;
+                $bookAuthor = $bookRepository->getBookAuthor($id);
+                //var_dump($bookAuthor);
+                $bookType = $bookRepository->getBookType($id);
+                
+
                 $this->render('book/show', [
-                    'book' => $book
+                    'book' => $book,
+                    'bookAuthor' => $bookAuthor,
+                    'bookType' => $bookType
                 ]);
             } else {
                 throw new \Exception("L'id est manquant en paramètre");
@@ -86,8 +100,45 @@ class BookController extends Controller
         $mysql = Mysql::getInstance();
         $pdo = $mysql->getPDO();
         $bookRepository = new BookRepository;
-        $book = $bookRepository->getBooks($pdo);
-        var_dump($book);
+        $books = $bookRepository->getBookList($pdo);
+        
+
+        $this->render('book/all', [
+                    'books' => $books,
+                    
+                ]);
+        var_dump($books);
+    }
+
+    protected function add()
+    {
+
+        
+
+        if(isset($_POST['addBook']))
+        {
+            $mysql = Mysql::getInstance();
+            $pdo = $mysql->getPDO();
+            $bookRepository = new BookRepository;
+            $addTheBook = $bookRepository->addBook($pdo, $_POST['title'], $_POST['description'], $_POST['image']);
+        };
+
+        $authorRepository = new AuthorRepository;
+        $authors = $authorRepository->getAuthor($pdo);
+        var_dump($authors);
+
+                $typeRepository = new TypeRepository;
+        $types = $typeRepository->getType($pdo);
+
+        $this->render('book/add', [
+            'authors' => $authors,
+            'types' => $types
+        ]);
+
+
+        
+
+        
     }
 
 }

@@ -7,11 +7,12 @@
                     <img src="assets/images/logo-bookeo.jpg" class="d-block mx-lg-auto img-fluid" alt="Logo Bookeo" width="400" loading="lazy">
                 </div>
                 <div class="col-lg-6">
-                    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
-                    <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Ma petite bibliothèque numérique en ligne</h1>
+                    <p class="lead">Voici Bookéo, un projet réalisé durant ma formation en développement web chez Studi.
+                        Le but de ce projet était de coder une application destinée à organiser des livres en PHP Objet.</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-                            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+                            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Plus d'infos</button>
+                            
                         </div>
                 </div>
             </div>        
@@ -26,7 +27,7 @@
                         <img src="uploads/books/<?=$book['image']?>" class="img-fluid border rounded-top" style="height: 30rem;" alt="Couverture du livre <?=$book['title']?>">
                         <div class="card-body">
                             <h5 class="card-title"><?=$book['title']?></h5>
-                            <a href="#" class="btn btn-primary">Découvrir</a>
+                            <a href="?controller=book&action=show&id=<?=$book['id']?>" class="btn btn-primary">Découvrir</a>
                             
                         </div>
                     </div>

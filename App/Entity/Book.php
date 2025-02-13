@@ -10,6 +10,9 @@ class Book
     protected string $image = '';
     protected int $type_id = 0;
     protected int $author_id = 0;
+    protected string $authorFirstName = '';
+    protected string $authorLastName = '';
+    protected string $typeName = '';
 
     /**
      * Get the value of id
@@ -130,6 +133,70 @@ class Book
     public function setAuthorId($author_id)
     {
         $this->author_id = $author_id;
+
+        return $this;
+    }
+
+
+
+
+
+    /**
+     * Get the value of authorFirstName
+     */ 
+    public function getAuthorFirstName()
+    {
+        return $this->authorFirstName;
+    }
+
+    /**
+     * Set the value of authorFirstName
+     *
+     * @return  self
+     */ 
+    public function setAuthorFirstName($authorFirstName)
+    {
+        $this->authorFirstName = $authorFirstName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of authorLastName
+     */ 
+    public function getAuthorLastName()
+    {
+        return $this->authorLastName;
+    }
+
+    /**
+     * Set the value of authorLastName
+     *
+     * @return  self
+     */ 
+    public function setAuthorLastName($authorLastName)
+    {
+        $this->authorLastName = $authorLastName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of typeName
+     */ 
+    public function getTypeName()
+    {
+        return $this->typeName;
+    }
+
+    /**
+     * Set the value of typeName
+     *
+     * @return  self
+     */ 
+    public function setTypeName($typeName)
+    {
+        $this->typeName = $typeName;
 
         return $this;
     }
