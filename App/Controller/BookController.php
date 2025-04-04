@@ -25,7 +25,7 @@ class BookController extends Controller
                     //appeler la méthode list
                     break;
                 case 'edit':
-                    //appeler la méthode edit
+                    $this->edit();
                     break;
                 case 'add':
                     $this->add();
@@ -69,19 +69,18 @@ class BookController extends Controller
                 $bookRepository = new BookRepository;
                 $book = $bookRepository->findOneById($id);
 
-                $mysql = Mysql::getInstance();
-                $pdo = $mysql->getPDO();
-                $bookRepository = new BookRepository;
+                
+                //$bookRepository = new BookRepository;
                 //$authorRepository = new AuthorRepository;
-                $bookAuthor = $bookRepository->getBookAuthor($id);
+                //$bookAuthor = $bookRepository->getBookAuthor($id);
                 //var_dump($bookAuthor);
-                $bookType = $bookRepository->getBookType($id);
+                //$bookType = $bookRepository->getBookType($id);
                 
 
                 $this->render('book/show', [
                     'book' => $book,
-                    'bookAuthor' => $bookAuthor,
-                    'bookType' => $bookType
+                    //'bookAuthor' => $bookAuthor,
+                    //'bookType' => $bookType
                 ]);
             } else {
                 throw new \Exception("L'id est manquant en paramètre");
@@ -113,21 +112,21 @@ class BookController extends Controller
     protected function add()
     {
 
-        
+        $mysql = Mysql::getInstance();
+        $pdo = $mysql->getPDO();
+
 
         if(isset($_POST['addBook']))
         {
-            $mysql = Mysql::getInstance();
-            $pdo = $mysql->getPDO();
             $bookRepository = new BookRepository;
-            $addTheBook = $bookRepository->addBook($pdo, $_POST['title'], $_POST['description'], $_POST['image']);
+            $addTheBook = $bookRepository->addBook($pdo, $_POST['title'], $_POST['description'], $_POST['image'], $_POST['author_id'], $_POST['type_id']);
         };
 
         $authorRepository = new AuthorRepository;
         $authors = $authorRepository->getAuthor($pdo);
-        var_dump($authors);
+        
 
-                $typeRepository = new TypeRepository;
+        $typeRepository = new TypeRepository;
         $types = $typeRepository->getType($pdo);
 
         $this->render('book/add', [
@@ -135,10 +134,6 @@ class BookController extends Controller
             'types' => $types
         ]);
 
-
-        
-
-        
     }
 
 }

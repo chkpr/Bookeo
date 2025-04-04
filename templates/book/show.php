@@ -6,8 +6,8 @@
 <img src="/uploads/books/<?=$book->getImage();?>" class="me-5 border rounded" style="width: 18rem;" alt="couverture du livre">
 <div class="mx-5">
 <h1><?=$book->getTitle();?></h1>
-<h2><?=$bookAuthor['first_name']?> <?=$bookAuthor['last_name']?></h2>
-<h4><?=$bookType['name']?></h4>
+<h2><?=$book->getFirst_name();?> <?=$book->getLast_Name();?></h2>
+<h4><?=$book->getType_name();?></h4>
 <p><?=$book->getDescription();?></p>
 
 </div>

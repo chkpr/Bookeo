@@ -23,12 +23,12 @@
             <li><a href="index.php" class="nav-link px-2 link-secondary">Accueil</a></li>
             <li><a href="index.php?controller=book&action=list" class="nav-link px-2">Tous les livres</a></li>
             <li><a href="index.php?controller=page&action=about" class="nav-link px-2">À propos</a></li>
-            <li><a href="index.php?controller=page&action=add" class="nav-link px-2">Gérer</a></li>
+            <li><a href="index.php?controller=book&action=add" class="nav-link px-2">Gérer</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Login</button>
-            <button type="button" class="btn btn-primary">Sign-up</button>
+            <button type="button" class="btn btn-outline-primary me-2">Connexion</button>
+            
             </div>
         </header>
     

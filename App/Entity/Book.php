@@ -10,9 +10,9 @@ class Book
     protected string $image = '';
     protected int $type_id = 0;
     protected int $author_id = 0;
-    protected string $authorFirstName = '';
-    protected string $authorLastName = '';
-    protected string $typeName = '';
+    protected string $first_name = '';
+    protected string $last_name = '';
+    protected string $type_name = '';
 
     /**
      * Get the value of id
@@ -141,62 +141,66 @@ class Book
 
 
 
+
+
+
+
     /**
-     * Get the value of authorFirstName
+     * Get the value of first_name
      */ 
-    public function getAuthorFirstName()
+    public function getFirst_name()
     {
-        return $this->authorFirstName;
+        return $this->first_name;
     }
 
     /**
-     * Set the value of authorFirstName
+     * Set the value of first_name
      *
      * @return  self
      */ 
-    public function setAuthorFirstName($authorFirstName)
+    public function setFirstName($first_name)
     {
-        $this->authorFirstName = $authorFirstName;
+        $this->first_name = $first_name;
 
         return $this;
     }
 
     /**
-     * Get the value of authorLastName
+     * Get the value of last_name
      */ 
-    public function getAuthorLastName()
+    public function getLast_Name()
     {
-        return $this->authorLastName;
+        return $this->last_name;
     }
 
     /**
-     * Set the value of authorLastName
+     * Set the value of last_name
      *
      * @return  self
      */ 
-    public function setAuthorLastName($authorLastName)
+    public function setLastName($last_name)
     {
-        $this->authorLastName = $authorLastName;
+        $this->last_name = $last_name;
 
         return $this;
     }
 
     /**
-     * Get the value of typeName
+     * Get the value of type_name
      */ 
-    public function getTypeName()
+    public function getType_name()
     {
-        return $this->typeName;
+        return $this->type_name;
     }
 
     /**
-     * Set the value of typeName
+     * Set the value of type_name
      *
      * @return  self
      */ 
-    public function setTypeName($typeName)
+    public function setName($type_name)
     {
-        $this->typeName = $typeName;
+        $this->type_name = $type_name;
 
         return $this;
     }

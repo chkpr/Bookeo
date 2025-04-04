@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-lg-6">
                     <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Ma petite bibliothèque numérique en ligne</h1>
-                    <p class="lead">Voici Bookéo, un projet réalisé durant ma formation en développement web chez Studi.
+                    <p class="lead">Bookéo est un projet réalisé durant ma formation en développement web chez Studi.
                         Le but de ce projet était de coder une application destinée à organiser des livres en PHP Objet.</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                             <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Plus d'infos</button>

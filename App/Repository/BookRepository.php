@@ -14,7 +14,10 @@ class BookRepository
         $mysql = Mysql::getInstance();
         $pdo = $mysql->getPDO();
 
-        $query = $pdo->prepare('SELECT * FROM book WHERE id = :id');
+        $query = $pdo->prepare('SELECT * FROM book 
+                                JOIN author ON book.author_id = author.id
+                                JOIN type ON book.type_id = type.id
+                                WHERE book.id = :id');
         $query->bindValue(':id', $id, $pdo::PARAM_INT);
         $query->execute();
         $book =$query->fetch($pdo::FETCH_ASSOC);
@@ -38,8 +41,7 @@ class BookRepository
         return $bookEntity;
     }
 
-     public function getBookAuthor(int $id)
-     {
+     public function getBookAuthor(int $id) {
         $mysql = Mysql::getInstance();
         $pdo = $mysql->getPDO();
 
@@ -73,7 +75,7 @@ class BookRepository
         $mysql = Mysql::getInstance();
         $pdo = $mysql->getPDO();
 
-        $query = $pdo->prepare('SELECT * FROM book ORDER BY id DESC LIMIT 3');
+        $query = $pdo->prepare('SELECT * FROM book ORDER BY id ASC LIMIT 3');
         
         $query->execute();
         return $query->fetchAll($pdo::FETCH_ASSOC);
@@ -98,16 +100,29 @@ class BookRepository
             var_dump($bookAuthor);
         }
 
-        public function addBook($pdo, string $title, string $description, string $image) {
-            
-            $query = $pdo->prepare('INSERT INTO book (title, description, image)
-                                VALUES (:title, :description, :image)');
+        public function addBook($pdo, string $title, string $description, string $image, int $author_id, int $type_id) {
+  
+
+            $query = $pdo->prepare('INSERT INTO book (title, description, image, author_id, type_id)
+                                VALUES (:title, :description, :image, :author_id, :type_id)');
             $query->bindValue(':title', $title, $pdo::PARAM_STR);
             $query->bindValue(':description', $description, $pdo::PARAM_STR);
-             $query->bindValue(':image', $image, $pdo::PARAM_STR);
-            
+            $query->bindValue(':image', $image, $pdo::PARAM_STR);
+            $query->bindValue(':author_id', $author_id, $pdo::PARAM_INT);
+            $query->bindValue(':type_id', $type_id, $pdo::PARAM_INT);
             $addTheBook = $query->execute();
             
         }
-   
-}
+
+        public function modifyBook (Book $book) {
+            if ($book->getId() !== null) {
+            $query = $this->pdo->prepare(
+                'UPDATE book SET title = :title, 
+                        description = :description, type_id = :type_id, author_id = :author_id, image = :image WHERE id = :id'
+            );
+            $query->bindValue(':id', $book->getId(), $this->pdo::PARAM_INT);
+            $edit = $query->execute();
+        
+            };
+        }
+    }
