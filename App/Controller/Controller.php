@@ -21,6 +21,11 @@ Class Controller
                     $pageController = new BookController();
                     $pageController->route();
                     break;
+                case 'auth':
+                        //charger controleur auth
+                        $controller = new AuthController();
+                        $controller->route();
+                        break;
 
                 default:
                     //Erreur
