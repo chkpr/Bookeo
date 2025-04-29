@@ -20,8 +20,11 @@ This project was created as part of Studi's web development learning program in 
 
 Clone the repository, start the server locally and import the database. Add the database username and password to config.php. Start the application on localhost port. The navigator should display the homepage with the last 3 books added.
 The database contains a test user with the following credentials:
-######login: testuser@test.com
-######password: test
+
+###### login: testuser@test.com
+
+###### password: test
+
 You can also add a new user to the database then hash the password and replace the original password with the hash in the database.
 
 ## Features being added
