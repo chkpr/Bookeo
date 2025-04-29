@@ -106,7 +106,6 @@ class BookController extends Controller
                     'books' => $books,
                     
                 ]);
-        var_dump($books);
     }
 
     protected function add()
