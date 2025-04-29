@@ -19,9 +19,15 @@ J'ai réalisé ce projet dans le cadre de ma formation en développement web che
 
 Après avoir cloné le repository et démarré le serveur local, il faut importer la base de données pour pouvoir démarrer l'application localement et configurer l'accès à la base de données dans le fichier config.php (renseigner 'db_username' et 'db_password' avec les identifiants correspondants).
 La page d'accueil s'affiche dans le navigateur avec les 3 derniers livres ajoutés.
-Il faut créer un utilisateur manuellement pour pouvoir commencer à ajouter des livres. Pour cela, il faut ajouter un utilisateur en base de données puis hasher son mot de pass avec password_hash() et insérer le mot de passe hashé en base de données. On peut ensuite se connecter avec les applications nouvellement créés.
+La base de données contient déjà un utilisateur test et les identifiants suivants :
+
+###### login: testuser@test.com
+
+###### password: test
+
+On peut également ajouter un utilisateur en base de données puis hasher son mot de pass avec password_hash() et insérer le mot de passe hashé en base de données. On peut ensuite se connecter avec les applications nouvellement créés.
 
 ## Fonctionnalités en cours d'ajout
 
-- Inscription
+- Inscription utilisateur
 - Attribution d'une note à chaque livre
